@@ -1,37 +1,37 @@
-// NOTES: Home page ("/"). Right now it only holds TEST code for favorites and the shared components. It will show the real recipe categories in step 5.
+// NOTES: Home page ("/"). Fetches all recipe categories and shows each as a link to /category/:name.
 
-import { useFavorites } from "../context/FavoritesContext";
+import { Link } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 import Spinner from "../components/Spinner";
 import ErrorMessage from "../components/ErrorMessage";
-import RecipeCard from "../components/RecipeCard";
+
+const CATEGORIES_URL = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
 export default function Home() {
-  const { favoriteIds, addFavorite } = useFavorites();
+  const { data, loading, error } = useFetch(CATEGORIES_URL);
+
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
+
+  const categories = data?.categories ?? [];
 
   return (
-    <>
-      <div className="home">
-        <div className="home-text">
-          <h1>DishCovery</h1>
-          <p>Discover recipes from around the world.</p>
+    <div>
+      <h1 className="page-title">DishCovery</h1>
+      <p className="page-subtitle">Pick a category to start exploring recipes.</p>
 
-          <button onClick={() => addFavorite("123")}>Add test favorite</button>
-          <p>Favorites: {favoriteIds.join(", ")}</p>
-        </div>
-      </div>
-
-      <Spinner />
-      <ErrorMessage message="Test error" />
       <div className="recipe-grid">
-        <RecipeCard
-          meal={{
-            idMeal: "52772",
-            strMeal: "Teriyaki Chicken Casserole",
-            strMealThumb:
-              "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
-          }}
-        />
+        {categories.map((cat) => (
+          <Link
+            key={cat.idCategory}
+            to={`/category/${encodeURIComponent(cat.strCategory)}`}
+            className="recipe-card"
+          >
+            <img src={cat.strCategoryThumb} alt={cat.strCategory} loading="lazy" />
+            <h3>{cat.strCategory}</h3>
+          </Link>
+        ))}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,41 +1,33 @@
-:root { --accent: #ee6044; --grey: #d9d9d9; --text: #333; }
-body { margin: 0; font-family: Arial, sans-serif; color: var(--text); }
-.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+:root {
+  --accent: #ee6044;
+  --text: #333;
+  --grey: #d9d9d9;
+}
 
-.navbar { display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 20px 32px; }
-.nav-links a { margin-right: 24px; font-weight: bold; color: var(--text); text-decoration: none; }
-.nav-user { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-.nav-user a { font-weight: bold; color: var(--text); text-decoration: none; }
+* {
+  box-sizing: border-box;
+}
 
-h1 { color: var(--accent); }
-.accent { color: var(--accent); }
-.muted { color: #666; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+}
 
-.home { display: flex; align-items: center; gap: 48px; min-height: 60vh; }
-.home-text { flex: 1; }
-.home-image { flex: 1; }
-.image-placeholder { background: var(--grey); height: 360px;
-  display: grid; place-items: center; }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
 
-.page-title { border: 1px solid var(--text); text-align: center; margin-bottom: 24px; }
+h1 {
+  color: var(--accent);
+}
 
-.rating-card { display: block; background: var(--grey); border: 1px solid var(--text);
-  padding: 16px; margin-bottom: 24px; color: var(--text); text-decoration: none; }
-.rating-card p { margin: 4px 0; }
+img {
+  max-width: 100%;
+}
 
-.login-box { max-width: 420px; margin: 40px auto; padding: 40px;
-  border: 1px solid var(--text); display: flex; flex-direction: column;
-  text-align: center; gap: 14px; }
-.login-box form { display: flex; flex-direction: column; gap: 14px; }
-.login-box input { padding: 12px; border: 1px solid var(--text); }
-.login-box button, .nav-user button { background: var(--text); color: white;
-  border: none; padding: 12px; border-radius: 6px; cursor: pointer; }
-.login-box a { font-weight: bold; text-decoration: none; }
-
-.home-image img {
-  width: 100%;       
-  height: 360px;      
-  object-fit: cover;  
-  border-radius: 8px;
+a {
+  color: var(--accent);
 }
