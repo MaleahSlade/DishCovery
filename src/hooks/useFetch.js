@@ -1,3 +1,5 @@
+// NOTES: Fetches data from a URL. Gives back data, loading and error. Usage: const { data, loading, error } = useFetch(url)
+
 import { useState, useEffect } from "react";
 
 // Generic data-fetching hook.

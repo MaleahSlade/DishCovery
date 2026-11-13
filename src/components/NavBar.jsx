@@ -1,3 +1,5 @@
+// NOTES: The top navigation bar shown on every page. <Link> changes pages without reloading.
+
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
